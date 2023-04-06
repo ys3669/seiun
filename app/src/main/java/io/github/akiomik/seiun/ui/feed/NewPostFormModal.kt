@@ -127,11 +127,11 @@ private fun PostContentField(content: String, onChange: (String) -> Unit) {
         onValueChange = onChange,
         label = { Text(stringResource(id = R.string.timeline_new_post_content)) },
         placeholder = { Text(text = stringResource(id = R.string.timeline_new_post_content_placeholder)) },
-        maxLines = 8,
+        //maxLines = 8,
         modifier = Modifier
-            .padding(20.dp)
+            .padding(0.dp)
             .fillMaxWidth()
-            .height(320.dp)
+            .height(360.dp)
             .focusRequester(focusRequester),
         supportingText = {
             Text(
@@ -178,11 +178,10 @@ private fun NewPostForm(
     onContentChange: (String) -> Unit,
     onImageRemove: () -> Unit
 ) {
-    Column(modifier = Modifier.padding(8.dp)) {
+    Column(modifier = Modifier.padding(4.dp)) {
         if (feedViewPost != null) {
             Box(
                 modifier = Modifier
-                    .padding(20.dp)
                     .fillMaxWidth()
             ) {
                 EmbedPost(viewPost = feedViewPost)
@@ -213,7 +212,7 @@ fun NewPostFormModal(feedViewPost: FeedViewPost? = null, onClose: () -> Unit) {
                 valid = true
             }
 
-            Spacer(modifier = Modifier.width(24.dp))
+            Spacer(modifier = Modifier.width(12.dp))
 
             PostButton(
                 content = content,

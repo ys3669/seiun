@@ -4,6 +4,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class PostEntityTextSlice(
-    val start: Int,
-    val end: Int
+    val start: Int? = null,
+    val end: Int? = null
 )

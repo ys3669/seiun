@@ -33,11 +33,11 @@ class PostFeedRepository(private val authRepository: AuthRepository) : Applicati
         Log.d(SeiunApplication.TAG, "Get timeline: cursor = $cursor")
 
         val timeline = RequestHelper.executeWithRetry(authRepository) {
-            getAtpClient().getTimeline("Bearer ${it.accessJwt}", cursor = cursor)
+            getAtpClient().getTimeline("Bearer ${it.accessJwt}", cursor = cursor, limit = 6)
         }
 
         timeline.feed.forEach { PostFeedCacheDataSource.putFeedPost(it) }
-
+        Log.d("Seiun timeline", timeline.toString())
         return timeline
     }
 

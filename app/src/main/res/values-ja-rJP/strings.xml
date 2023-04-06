@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">青雲</string>
+    <string name="app_name">青雲.dev</string>
     <string name="tag">Seiun</string>
     <string name="timeline">ホーム</string>
     <string name="notification">通知</string>

@@ -13,7 +13,7 @@ android {
 
     @Suppress("UnstableApiUsage")
     defaultConfig {
-        applicationId = "io.github.akiomik.seiun"
+        applicationId = "io.github.akiomik.dev"
         minSdk = 28
         targetSdk = 33
         versionCode = 13

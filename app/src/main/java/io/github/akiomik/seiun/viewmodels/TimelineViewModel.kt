@@ -3,6 +3,7 @@ package io.github.akiomik.seiun.viewmodels
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import io.github.akiomik.seiun.SeiunApplication
+import io.github.akiomik.seiun.SeiunApplication.Companion.TAG
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow

@@ -53,6 +53,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -153,7 +155,7 @@ private fun ReplyIndicator(viewPost: FeedViewPost) {
 
     TextButton(onClick = { showPostForm = true; }) {
         Row(
-            verticalAlignment = Alignment.CenterVertically,
+            //verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Icon(
@@ -281,7 +283,7 @@ fun MenuButton(viewPost: FeedViewPost) {
         )
     }
 
-    DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+    DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }, offset = DpOffset(x = (180).dp, y = (0).dp)) {
         if (viewPost.post.author.did == profile?.did) {
             DropdownMenuItem(
                 text = { Text(stringResource(id = R.string.delete)) },
@@ -345,7 +347,7 @@ fun MenuButton(viewPost: FeedViewPost) {
 }
 
 @Composable
-private fun FeedPostContent(viewPost: FeedViewPost) {
+fun FeedPostContent(viewPost: FeedViewPost) {
     val createdAt = DateFormat.format(
         "yyyy/MM/dd HH:mm",
         viewPost.post.record.createdAt.toInstant().toEpochMilli()
@@ -356,16 +358,13 @@ private fun FeedPostContent(viewPost: FeedViewPost) {
 
         if (viewPost.post.record.text.isNotEmpty()) {
             SelectionContainer {
-                Text(text = viewPost.post.record.text, modifier = Modifier.padding(top = 8.dp))
+                Text(text = viewPost.post.record.text, modifier = Modifier.padding(top = 0.dp))
             }
         }
 
         ImageTile(viewPost)
-
         Row(
-            modifier = Modifier.padding(top = 8.dp, bottom = 4.dp).fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.padding(top = 0.dp, bottom = 0.dp),
         ) {
             ReplyIndicator(viewPost = viewPost)
             RepostIndicator(viewPost = viewPost)
@@ -373,7 +372,8 @@ private fun FeedPostContent(viewPost: FeedViewPost) {
             MenuButton(viewPost = viewPost)
         }
         Text(
-            modifier = Modifier.padding(bottom = 4.dp),
+            //Post time
+            modifier = Modifier.padding(bottom = 0.dp),
             text = createdAt.toString(),
             color = Color.Gray,
             style = MaterialTheme.typography.labelMedium
@@ -386,7 +386,7 @@ fun ImageTile(viewPost: FeedViewPost) {
     var showImagePager by remember { mutableStateOf(false) }
     var selectedIndex by remember { mutableStateOf(0) }
 
-    val paddingTop = 16.dp
+    val paddingTop = 8.dp
     val maxHeight = 240.dp
 
     viewPost.post.embed?.images?.let { images ->
@@ -475,14 +475,14 @@ fun ImagePager(images: List<ImagesViewImage>, initialIndex: Int, onDismissReques
 
 @Composable
 fun FeedPost(viewPost: FeedViewPost, onProfileClick: (String) -> Unit) {
-    Column(modifier = Modifier.padding(14.dp)) {
+    Column(modifier = Modifier.padding(10.dp)) {
         if (viewPost.reason?.type == "app.bsky.feed.feedViewPost#reasonRepost") {
             RepostText(viewPost = viewPost)
         } else if (viewPost.reply != null) {
             ReplyText(viewPost = viewPost)
         }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
             Avatar(viewPost = viewPost, onClick = onProfileClick)
             FeedPostContent(viewPost = viewPost)
         }

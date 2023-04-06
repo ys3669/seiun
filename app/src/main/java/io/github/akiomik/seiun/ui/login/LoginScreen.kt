@@ -51,7 +51,7 @@ private fun LoginTitle() {
     Text(
         text = stringResource(id = R.string.login_title),
         fontSize = 23.sp,
-        modifier = Modifier.padding(20.dp)
+        modifier = Modifier.padding(horizontal = 23.dp)
     )
 }
 
@@ -184,7 +184,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit, onCreateAccountClick: () -> Unit) {
             AppName()
             LoginTitle()
             LoginForm(onLoginSuccess)
-            Spacer(modifier = Modifier.size(16.dp))
             CreateAccountButton(onCreateAccountClick)
         }
     }

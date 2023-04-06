@@ -36,11 +36,11 @@ object AppViewModel : ApplicationViewModel() {
     private val userRepository = SeiunApplication.instance!!.userRepository
 
     fun updateProfile() {
-        wrapError(
+        /*wrapError(
             run = { userRepository.getProfile() },
             onSuccess = { innerProfile.value = it },
             onError = { Log.d(SeiunApplication.TAG, "Failed to init ProfileViewModel: $it") }
-        )
+        )*/
     }
 
     fun onTimeline() {

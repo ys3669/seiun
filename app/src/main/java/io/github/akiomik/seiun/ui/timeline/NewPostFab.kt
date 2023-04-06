@@ -23,17 +23,15 @@ fun NewPostFab() {
     if (showPostForm) {
         NewPostFormModal { showPostForm = false }
     } else {
-        Box(modifier = Modifier.fillMaxSize()) {
             FloatingActionButton(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(alignment = Alignment.BottomEnd),
+                //modifier = Modifier
+                    //.padding(0.dp),
+                    //.align(alignment = Alignment.BottomEnd),
                 onClick = {
                     showPostForm = true
                 }
             ) {
                 Icon(Icons.Filled.Add, contentDescription = "Create new post")
             }
-        }
     }
 }

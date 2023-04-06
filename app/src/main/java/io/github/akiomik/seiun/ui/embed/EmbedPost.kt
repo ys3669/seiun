@@ -73,7 +73,7 @@ private fun PostContent(viewPost: FeedViewPost) {
         viewPost.post.record.createdAt.toInstant().toEpochMilli()
     )
 
-    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(modifier = Modifier.padding(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         NameRow(viewPost = viewPost)
         Text(text = viewPost.post.record.text)
         Text(

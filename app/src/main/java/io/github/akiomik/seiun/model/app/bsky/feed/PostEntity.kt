@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class PostEntity(
-    val index: PostEntityTextSlice,
-    val type: String,
-    val value: String
+    val index: PostEntityTextSlice? = null,
+    val type: String? = null,
+    val value: String? = null
 )
